@@ -16,7 +16,7 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #7e7e7e;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -27,13 +27,13 @@
         <h1>Welcome to My Main Page</h1>
         <p>This is a simple HTML page with JavaScript.</p>
         <button id="clickButton">Click Me!</button>
-        <p id="message"></p>
     </div>
 
     <script>
         // JavaScript code
         document.getElementById('clickButton').addEventListener('click', function() {
-            document.getElementById('message').innerText = 'Button Clicked!';
+            // Redirect to another page
+            window.location.href = 'https://lufy20106.github.io/stuff/math/'
         });
     </script>
 </body>
