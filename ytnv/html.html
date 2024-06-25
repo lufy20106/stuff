@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Player</title>
+    <style>
+        body {
+            background-color: #181818;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+        input, button {
+            background-color: #333;
+            color: #FFF;
+            border: 1px solid #444;
+            padding: 10px;
+            margin: 5px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: #444;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #FFF;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #FFF;
+            cursor: pointer;
+        }
+        .video-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .video-info img {
+            width: 120px;
+            height: 90px;
+            margin-right: 20px;
+        }
+        .controls, .playlist-controls {
+            margin-top: 20px;
+        }
+        .slider {
+            margin: 10px 0;
+            width: 200px;
+        }
+        #title {
+            font-size: 1em;
+        }
+        .queue {
+            margin-top: 20px;
+            background-color: #222;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .active {
+            background-color: #555;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="videoLink" placeholder="Enter YouTube video link or playlist link">
+    <button onclick="addVideoOrPlaylist()">Add Video/Playlist</button>
+    <div id="video-details" class="video-info" style="display: none;">
+        <img id="thumbnail" src="" alt="Video Thumbnail">
+        <div>
+            <h2 id="title"></h2>
+            <p id="author"></p>
+        </div>
+    </div>
+    <div id="player"></div>
+    <div class="controls">
+        <button onclick="playSound()" style="display: none;" id="playButton">Play Sound</button>
+        <button onclick="stopSound()" style="display: none;" id="stopButton">Stop Sound</button>
+        <div class="slider">
+            <label for="timeSlider">Time:</label>
+            <input type="range" id="timeSlider" min="0" value="0" step="1" onchange="seekVideo()">
+        </div>
+        <div class="slider">
+            <label for="volumeSlider">Volume:</label>
+            <input type="range" id="volumeSlider" min="0" max="100" value="100" step="1" onchange="changeVolume()">
+        </div>
+    </div>
+    <div class="playlist-controls">
+        <button id="shuffleButton" onclick="toggleShuffle()">Shuffle</button>
+        <button id="loopButton" onclick="toggleLoop()">Loop</button>
+        <button id="loopQueueButton" onclick="toggleLoopQueue()">Loop Queue</button>
+        <div class="queue" id="queue"></div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
